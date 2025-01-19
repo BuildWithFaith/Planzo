@@ -171,16 +171,18 @@ export default function ChatBot() {
                     value={input}
                     onChange={handleInputChange}
                     placeholder="Type your message..."
-                    className="flex-1 border rounded-lg focus:outline-none focus:ring-blue-500"
+                    className="flex-1 border rounded-lg focus:outline-none bg-white/10 placeholder:text-black/60"
                   />
                   <Button
                     type="submit"
                     disabled={isLoading}
                     size="icon"
-                    className="transition-transform transform hover:scale-105 active:scale-95 bg-transparent"
+                    className="transition-transform transform hover:scale-105 active:scale-95 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 p-1 rounded-full"
                   >
-                    <Send className="h-4 w-4 md:h-6 md:w-6" />
+                    <Send className="h-4 w-4 md:h-5 md:w-5 text-white" />
                   </Button>
+
+
                 </form>
               </CardFooter>
             </Card>
