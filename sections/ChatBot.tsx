@@ -69,9 +69,9 @@ export default function ChatBot() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed bottom-16 right-4 z-50 w-[90%] md:w-[500px]"
+            className="fixed bottom-16 right-4 z-50 w-[90%] md:w-[500px] backdrop-blur-md"
           >
-            <Card className="bg-white bg-opacity-30 backdrop-blur-md border border-white/30 shadow-lg rounded-lg p-2">
+            <Card className="border border-white/30 shadow-lg rounded-lg p-2">
               {/* Header */}
               <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle className="text-lg font-bold">Planzo AI</CardTitle>
@@ -85,7 +85,7 @@ export default function ChatBot() {
               <CardContent>
                 <div
                   ref={chatContainerRef}
-                  className="h-[320px] overflow-y-auto p-4 space-y-3 scroll-smooth scrollbar-thin scrollbar-thumb-blue-500/70 scrollbar-track-white/70 scrollbar-corner-white"
+                  className="h-[320px] overflow-y-auto overflow-x-hidden p-4 space-y-3 scroll-smooth scrollbar-thin scrollbar-thumb-blue-500/70 scrollbar-track-white/70 scrollbar-corner-white"
                 >
                   {messages?.length === 0 && (
                     <motion.div
@@ -101,11 +101,11 @@ export default function ChatBot() {
                       key={index}
                       initial={{ opacity: 0, x: message.role === "user" ? 50 : -50 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
+                      transition={{ duration: 0.1, type: "spring", stiffness: 200 }}
                       className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                     >
                       <div
-                        className={`max-w-[80%] px-3 py-2 rounded-lg ${message.role === "user"
+                        className={`max-w-[80%] px-3 py-2 rounded-lg break-words ${message.role === "user"
                           ? "bg-primary text-primary-foreground"
                           : "bg-muted"
                           } transition-all duration-200`}
@@ -159,6 +159,7 @@ export default function ChatBot() {
                   )}
                 </div>
               </CardContent>
+
 
               {/* Input */}
               <CardFooter>
