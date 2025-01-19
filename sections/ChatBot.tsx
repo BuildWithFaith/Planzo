@@ -165,21 +165,21 @@ export default function ChatBot() {
               <CardFooter>
                 <form
                   onSubmit={handleSubmit}
-                  className="flex w-full items-center mt-1 pl-5 space-x-3"
+                  className="flex w-full items-center mt-2 pl-5 space-x-3"
                 >
                   <Input
                     value={input}
                     onChange={handleInputChange}
                     placeholder="Type your message..."
-                    className="flex-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="flex-1 border rounded-lg focus:outline-none focus:ring-blue-500"
                   />
                   <Button
                     type="submit"
                     disabled={isLoading}
                     size="icon"
-                    className="transition-transform transform hover:scale-105 active:scale-95"
+                    className="transition-transform transform hover:scale-105 active:scale-95 bg-transparent"
                   >
-                    <Send className="h-4 w-4" />
+                    <Send className="h-4 w-4 md:h-6 md:w-6" />
                   </Button>
                 </form>
               </CardFooter>
