@@ -113,14 +113,32 @@ export default function ChatBot() {
                         <ReactMarkdown
                           remarkPlugins={[remarkGfm]}
                           components={{
+                            a: ({ node, href, children, ...props }) => {
+                              const isExternal = href && (href.startsWith('http') || href.startsWith('www'));
+                              return (
+                                <a 
+                                  href={href}
+                                  {...props}
+                                  className={`
+                                    text-blue-600 hover:text-blue-800 
+                                    transition-colors duration-200 
+                                    ${isExternal ? 'after:content-["↗"] after:ml-1 after:text-sm after:text-gray-500' : ''}
+                                  `}
+                                  target={isExternal ? '_blank' : undefined}
+                                  rel={isExternal ? 'noopener noreferrer' : undefined}
+                                >
+                                  {children}
+                                </a>
+                              );
+                            },
                             code({ inline, children, ...props }: { inline?: boolean, children?: React.ReactNode }) {
                               return inline ? (
-                                <code {...props} className="bg-gray-200 px-1 rounded">
+                                <code {...props} className="bg-gray-200 px-1 rounded text-red-600">
                                   {children}
                                 </code>
                               ) : (
-                                <pre {...props} className="bg-gray-200 p-2 rounded">
-                                  <code>{children}</code>
+                                <pre {...props} className="bg-gray-200 p-2 rounded overflow-x-auto">
+                                  <code className="text-sm">{children}</code>
                                 </pre>
                               );
                             },
