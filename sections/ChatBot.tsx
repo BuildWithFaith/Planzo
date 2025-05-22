@@ -91,7 +91,7 @@ export default function ChatBot() {
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className="text-gray-500 flex justify-center items-center"
+                      className="text-black/50 flex justify-center items-center"
                     >
                       No messages yet
                     </motion.div>
